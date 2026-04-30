@@ -1,0 +1,62 @@
+INSERT INTO classicmodels.offices
+(officeCode,city,phone,addressLine1,addressLine2,state,country,postalCode,territory)
+VALUES
+(8,'Taipei','23826015','Kung Yuan Road',null,null,'Taiwan','100','ASIA');
+
+
+
+set autocommit=0;
+
+INSERT INTO classicmodels.offices
+(officeCode,city,phone,addressLine1,addressLine2,state,country,postalCode,territory)
+VALUES
+('9','Taoyuan','0323826017','Taoyuan Kung Yuan Road',null,null,'Taiwan','300','ASIA'),
+('10','Keelung','0223826016','Keelung Kung Yuan Road',null,null,'Taiwan','200','ASIA');
+
+
+-- rollback;
+
+-- set autocommit=1;
+
+
+select ofc.officeCode,ofc.city,ofc.phone,ofc.addressLine1,
+       emp.employeeNumber,emp.firstName,emp.extension,emp.email,emp.jobTitle
+from classicmodels.offices as ofc
+inner join classicmodels.employees as emp
+on ofc.officeCode=emp.officeCode
+order by ofc.officeCode
+
+
+select emp.employeeNumber,emp.firstName,emp.extension,emp.email,
+       cst.customerNumber,cst.customerName,cst.contactFirstName,cst.phone
+from classicmodels.employees as emp
+right join classicmodels.customers as cst
+on emp.employeeNumber=cst.salesRepEmployeeNumber
+where emp.employeeNumber is null
+
+
+select cst.customerNumber,cst.contactFirstName,cst.phone,
+       ord.orderNumber,ord.requiredDate,ord.status,
+       det.productCode,det.priceEach
+from classicmodels.customers as cst
+inner join classicmodels.orders as ord
+on cst.customerNumber=ord.customerNumber
+inner join classicmodels.orderdetails as det
+on ord.orderNumber=det.orderNumber
+
+
+select *
+from classicmodels.employees
+where officecode in (
+
+select officecode
+from classicmodels.offices
+where city='san francisco' or city='tokyo')
+
+select boss.employeeNumber as BossNo,boss.firstName as BossName, boss.jobTitle as BosTitle,
+ emp.employeeNumber,emp.firstName,emp.jobTitle 
+from classicmodels.employees as emp
+inner join classicmodels.employees as boss
+on emp.reportsTo = boss.employeenumber
+
+

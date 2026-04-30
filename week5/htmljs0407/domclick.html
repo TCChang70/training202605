@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>     
+</head>
+<body>  
+<button onclick="triggerAlert(this);" data-name="Mike">click me</button>
+<button id="bt1" data-name="Mary">Mary Click</button>
+ <script>    
+    document.getElementById('bt1').addEventListener('click', function(){
+        alert(this.getAttribute('data-name'));
+    });
+
+    function triggerAlert(obj){
+        alert(obj.getAttribute('data-name'));        
+    }
+</script>
+</body>
+</html>

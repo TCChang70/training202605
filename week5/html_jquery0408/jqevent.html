@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button id="myButton">Click Me</button> <br />
+    First:<input type="text" id="first" value="1st"> <br />
+    Second:<input type="text" id="second" value="2nd"> <br />
+    Third:<input type="text" id="third" value="3rd"> <br />
+
+
+    <script>
+        myclick = function () {
+
+        }
+        function start() {
+            $("#myButton").click(myclick);
+            $("input").focus(function () {
+                 $(this).css("background-color", "yellow");
+             });
+            $("input").blur(function () { 
+                $(this).css("background-color", "white"); 
+            });
+
+        }
+        $(document).ready(() => {
+            console.log("jQuery is ready!");
+            start();
+        });
+    </script>
+</body>
+
+</html>

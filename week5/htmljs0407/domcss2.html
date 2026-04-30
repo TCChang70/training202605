@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>
+    <style>
+        #elem {
+            position: absolute;
+            left: 100px;
+            top: 200px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="elem" style="top:50px;">CSS Property Test</div>
+    <button onclick="show()">show</button>
+
+    <script>
+        function show() {
+            var elem = document.getElementById('elem');
+            // 顯示100px
+            var computed = window.getComputedStyle(elem);
+            console.log(elem.style.top);
+            console.log(computed.height);
+            // 顯示50px
+            console.log(computed.top);
+
+        }
+
+
+    </script>
+</body>
+
+</html>

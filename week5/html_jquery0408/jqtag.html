@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>   
+    <style>       
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+</head>
+<body>  
+  <button id="myButton">Click Me</button> 
+  <button id="myButton2">Class Click</button>  
+  <a href="https://www.google.com">Go to Google</a><p/>
+  <a href="https://www.facebook.com">Go to Facebook</a><p/>
+  <a href="https://tw.yahoo.com">Go to Yahoo</a><p/>
+  <p class="myClass">Paragraph 1</p>
+  <p class="myClass">Paragraph 2</p>
+  <script>
+    showClass=()=>{
+        var classElements = $(".myClass");
+        classElements.each((index,element) => {
+            console.log($(element).text());
+        });
+    }
+    showAll=()=>{
+        var allLinks = $("a");
+        allLinks.each((index,element) => {
+            console.log($(element).attr("href"));
+        });
+    }
+    function start(){
+       $("#myButton").click(showAll);
+       $("#myButton2").click(showClass);
+    }
+    $(document).ready(()=>{       
+        console.log("jQuery is ready!");
+        start();
+    });
+  </script>  
+</body>
+</html>

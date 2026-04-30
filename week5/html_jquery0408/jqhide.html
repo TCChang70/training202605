@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>   
+    <style>       
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+</head>
+<body>  
+  <button id="myButton">Hide Me</button>  
+  <button id="myButton2">Show Me</button>  
+  <button id="myButton3">Toggle Me</button>  <br/>
+  <div id="myDiv">
+    <p>這是第一段.</p>
+    <p>這是第二段.</p>
+  </div>
+  <script>
+    myclick=function(){
+        $("#myDiv").hide();
+    }
+    myclick2=function(){
+        $("#myDiv").show();
+    }
+    function start(){
+        $("#myButton").click(myclick);
+        $("#myButton2").click(myclick2);
+        $("#myButton3").click(function(){
+            $("#myDiv").toggle();
+        });
+    }
+    $(document).ready(()=>{       
+        console.log("jQuery is ready!");
+        start();
+    });
+  </script>  
+</body>
+</html>

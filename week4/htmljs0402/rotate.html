@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>   
+   
+</head>
+<body>  
+    <img src="./images/img7.jpg" alt="Picture" id="myImage" width="300" height="240"/><br/>
+    <button onclick="startRotate()">Start</button>
+    <button onclick="stopRotate()">Stop</button>
+  
+    
+</body>
+<script>
+   var imgs = ["./images/img7.jpg", "./images/img8.jpg",
+    "./images/img9.jpg", "./images/img10.jpg", "./images/img11.jpg", "./images/img12.jpg"];
+   var currentIndex = 0;
+   var rotateInterval;
+   function startRotate(){
+       rotateInterval = setInterval(change, 3000);
+   }
+   function change(){
+       var image = document.getElementById("myImage");
+       currentIndex = (currentIndex + 1) % imgs.length;
+       image.src = imgs[currentIndex];
+   }
+   function stopRotate(){
+       clearInterval(rotateInterval);
+   }
+</script>
+</html>

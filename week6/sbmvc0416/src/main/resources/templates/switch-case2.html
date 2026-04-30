@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<title>Add Bootstrap CSS Demo</title>
+
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>User</h1>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>User Name</th>
+						<th>User Email</th>
+						<th>User Ability</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${users}">
+						<td th:text="${user.userName}"></td>
+						<td th:text="${user.email}"></td>
+						<td>
+							<div th:switch="${user.role}">
+								<p th:case="'ADMIN'">User is an administrator</p>
+								<p th:case="'MANAGER'">User is a manager</p>
+								<p th:case="'GUEST'">User is a guest</p>								
+								<p th:case="*">User is some other thing</p>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</body>
+</html>

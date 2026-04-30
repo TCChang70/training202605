@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>   
+    <style>   
+       .big{
+           font-size: 30px;
+       }
+       .small{
+           font-size: 10px;
+       }
+       .blue{
+           color: blue;
+       }
+       .red{
+           color: red;
+       }    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+</head>
+<body>  
+  <button id="myButton">add small blue</button>  
+  <button id="myButton2">remove blue</button> 
+  <h1 class="myhead">This is a big blue heading</h1>
+  <script>
+    myclick=function(){
+        //alert("Button was clicked!");
+        $(".myhead").addClass("small");
+        $(".myhead").addClass("blue");
+    }
+    function start(){
+        $("#myButton").click(myclick);
+        $("#myButton2").click(function(){
+            $(".myhead").removeClass("blue");
+        });
+    }
+    $(document).ready(()=>{       
+        console.log("jQuery is ready!");
+        start();
+    });
+  </script>  
+</body>
+</html>

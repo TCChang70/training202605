@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>   
+    <style>       
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+</head>
+<body>  
+  <button id="myButton">Click Me</button>  <br/>
+  Name: <input type="text" id="myname" value="John Doe"/><br/>
+  <div id="greeting">Good Morning</div>
+  <script>
+    myclick=function(){  
+        name=prompt("Please enter your name:", "Mary Jane");      
+        $("#myname").val(name);
+        $("#greeting").text("Hello, "+name+"!");
+        console.log("Name: "+$("#myname").val());
+        console.log($("#greeting").text());
+    }
+    function start(){
+        $("#myButton").click(myclick);
+    }
+    $(document).ready(()=>{       
+        console.log("jQuery is ready!");
+        start();
+    });
+  </script>  
+</body>
+</html>

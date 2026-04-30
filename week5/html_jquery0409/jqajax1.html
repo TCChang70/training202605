@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button id="myButton">air json</button>
+    <table id="airQ" width="90%"></table>
+    <script>
+        function onSuccess(data) {
+            $("#airQ").empty();
+            $("#airQ").attr("border", "1");
+            //建立表格的第一列
+            var firstRow = $("<tr><th>地區</th><th>預報內容</th></tr>");
+            $("#airQ").append(firstRow);
+            //將取得的資料一一建立為表格的每一列
+            $.each(data, function (i) {
+                var row = $("<tr></tr>");
+                var td1 = $("<td></td>").text(this.Area).appendTo(row);
+                var td2 = $("<td></td>").text(this.Content).appendTo(row);
+                $("#airQ").append(row);
+            });
+        }
+        const myclick = function () {
+            dataUrl = "air.json";
+            $.ajax({
+                method: 'GET',
+                url: dataUrl,	//設定資料的網址
+                dataType: "json",	//設定回傳的資料格式
+                success: onSuccess	//設定當Ajax要求成功時所要執行的函式
+            });
+
+
+        }
+        function start() {
+            $("#myButton").click(myclick);
+        }
+        $(document).ready(() => {
+            console.log("jQuery is ready!");
+            start();
+        });
+    </script>
+</body>
+
+</html>

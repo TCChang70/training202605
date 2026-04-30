@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="foo"><span>hello world</span></div>
+
+    <button onclick="update()">edit</button>
+    <script>
+        function update() {
+            var div = document.getElementById('foo');
+            // 顯示 <span>hello world</span>
+            console.log(div.innerHTML);
+
+            // 將 div 的內容改成 123
+            div.innerHTML = '<p style="color:red;">123</p>';
+
+            // 顯示 123
+            console.log(div.innerHTML);
+
+        }
+
+    </script>
+</body>
+
+</html>

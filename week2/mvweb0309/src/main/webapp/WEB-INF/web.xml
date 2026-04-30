@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    version="4.0"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+  <display-name>Archetype Created Web Application</display-name>
+   <servlet>
+     <servlet-name>pa</servlet-name>
+     <servlet-class>ParamsServlet</servlet-class>
+     <init-param>
+         <param-name>name</param-name>
+         <param-value>Jason</param-value>        
+     </init-param>
+     <init-param>        
+         <param-name>email</param-name>
+         <param-value>Jason@demo.com</param-value>
+     </init-param>             
+  </servlet>
+  <servlet-mapping>
+     <servlet-name>pa</servlet-name>
+     <url-pattern>/paraminit</url-pattern>     
+  </servlet-mapping>
+  <context-param>
+     <param-name>host</param-name>
+     <param-value>myhost.com</param-value>
+</context-param>
+</web-app>

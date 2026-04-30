@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/angular.js/1.8.1/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl"> 
+<table border="1" width="50%">
+  <tr ng-repeat="x in names  | orderBy : 'Country' : true"  >
+    <td>{{ $index + 1 }}</td>
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
+
+ 
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+	$http({
+		method: 'GET',
+		url: 'http://localhost:8080/mvwebuser0409/sites.json'
+	}).then(function successCallback(response) {
+			$scope.names = response.data.sites;
+		}, function errorCallback(response) {
+			// 請求失敗執行程式碼
+	});
+
+});
+
+</script>
+
+ 
+</body>
+</html>

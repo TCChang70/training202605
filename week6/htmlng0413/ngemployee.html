@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+        AngularJS - JPA Employee Demo using $http service
+    </title>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>    
+    <!-- Load AngularJS -->
+    <script src="./js/main.js"></script>
+       <style>
+      .button {
+          cursor: pointer;
+          color: blue;
+      }
+      td,th{
+        border: 1px solid gray;
+        width: 25%;
+        text-align: left;
+      }
+      table {
+        width: 90%;
+      }
+    </style>
+  <head>
+  <body ng-app="EmployeeManagement" ng-controller="EmployeeManagementController">
+     <h1>
+          AngularJS - Use $http to invoke Employee APIs
+      </h1>
+ 
+      <table>
+        <tr>
+          <th>Employee Number</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Extension</th>
+          <th>Email</th>
+          <th>Office Code</th>
+          <th>Reports To</th>
+          <th>Job Title</th>
+          <th>Actions</th>
+        </tr>
+ 
+        <tr ng-repeat="employee in employees">
+          <td>{{ employee.employeeNumber }}</td>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.extension }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.officeCode }}</td>
+          <td>{{ employee.reportsTo }}</td>
+          <td>{{ employee.jobTitle }}</td>
+          <td><a ng-click="editEmployee( employee )" class="button">Edit</a> | <a ng-click="removeEmployee( employee )" class="button">Remove</a></td>
+        </tr>
+ 
+      </table>
+ 
+      <h2>Add/Edit Employee</h2>
+ 
+    <form ng-submit="submitEmployee()">
+        <table>
+          <tr>
+            <td>Employee Number</td>
+            <td><input type="text" ng-model="form.employeeNumber" size="60" /></td>
+          </tr>
+        <tr>
+            <td>First Name</td>
+            <td><input type="text" ng-model="form.firstName" size="100" /></td>
+          </tr>
+          <tr>
+            <td>Last Name</td>
+            <td><input type="text" ng-model="form.lastName" size="100" /></td>
+          </tr>
+          <tr>
+            <td>Extension</td>
+            <td><input type="text" ng-model="form.extension" size="60" /></td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td><input type="text" ng-model="form.email" size="60" /></td>
+          </tr>
+          <tr>
+            <td>Office Code</td>
+            <td><input type="text" ng-model="form.officeCode" size="60" /></td>
+          </tr>
+          <tr>
+            <td>Reports To</td>
+            <td><input type="text" ng-model="form.reportsTo" size="60" /></td>
+          </tr>
+          <tr>
+            <td>Job Title</td>
+            <td><input type="text" ng-model="form.jobTitle" size="60" /></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit" value="Submit" /></td>
+          </tr>
+        </table>
+    </form>
+  </body>
+</html>

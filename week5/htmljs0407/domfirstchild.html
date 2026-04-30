@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <p id="foo"><span>First span</span><br/><span id="s1">2nd span</span><br/><span>Last span</span></p>
+
+    <button onclick="nodetest()">show</button>
+    <script>
+        function nodetest() {
+            var p = document.getElementById('foo');
+            // 會顯示 "SPAN"
+            console.log(p.firstChild.nodeName+":"+p.firstChild.innerHTML);
+            console.log(p.lastChild.nodeName+":"+p.lastChild.innerHTML);
+            console.log("previousSibling:"+document.getElementById('s1').previousSibling.nodeName);
+            console.log("nextSibling:"+document.getElementById('s1').nextSibling.nodeName);
+        }
+    </script>
+</body>
+
+</html>

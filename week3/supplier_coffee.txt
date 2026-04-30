@@ -1,0 +1,13 @@
+{
+ "supId":10,
+ "supName":"Gjun Company",
+ "street":"Kung Yuan Road",
+ "city":"Taipei",
+ "state":"TW",
+ "zip":"100",
+ "coffees":
+   [
+     {"cofName":"Coffee A","price":49,"sales":5,"total":20},
+     {"cofName":"Coffee B","price":39,"sales":9,"total":50}
+   ]
+}

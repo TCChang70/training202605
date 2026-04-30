@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>     
+</head>
+<body>  
+ <p id="foo">hello world</p>
+ <p id="foo2" style="color:aquamarine;font-size: 24px;">hello world</p>
+ <button onclick="change()">show</button>
+ <button onclick="change2()">show 2</button>
+ <button onclick="getCSS()">get CSS</button>
+ <button onclick="setCSS()">set CSS</button>
+ <script>
+    function change(){
+        let element = document.getElementById("foo");
+        element.style.color = "red";
+        element.style.fontSize = "30px";
+    }  
+    function change2(){
+        let element = document.getElementById("foo");
+        element.style['background-color'] = "yellow";
+        element.style.fontSize = "20px";
+    }
+    function getCSS(){
+        let element = document.getElementById("foo2");        
+        console.log("cssText: " + element.style.cssText);
+    }
+    function setCSS(){
+        let element = document.getElementById("foo2");
+        element.style.cssText = "color: blue; font-size: 28px;";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>     
+</head>
+<body>  
+ <h2>非同步</h2>
+  <button onclick="getData()">show</button><p></p>
+    <table id="employeeTable" border="1" width="60%">
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>OfficeCode</th>
+            <th>JobTitle</th>
+        </tr>
+
+    </table>   
+   <script>
+   function showEmployees(employees) {
+     const table = document.getElementById('employeeTable');
+     employees.forEach(employee => {
+          const row = table.insertRow();
+          row.insertCell(0).textContent = employee.employeeNumber;
+          row.insertCell(1).textContent = employee.firstName + " " + employee.lastName;
+          row.insertCell(2).textContent = employee.email;
+          row.insertCell(3).textContent = employee.officeCode;
+          row.insertCell(4).textContent = employee.jobTitle;
+     });
+   }
+   // https://jsonplaceholder.typicode.com/photos?_limit=5
+   async function getData() {
+    try {
+        const response = await fetch('http://localhost:8080/mvrsjpa0331/api/employees');
+        const data = await response.json();
+        console.log(data);
+        showEmployees(data);
+    } catch (error) {
+        console.error("An error occurred:", error);
+    }
+   }
+   </script>
+</body>
+</html>

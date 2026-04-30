@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <h2>Inputs</h2>
+    <form action="javascript:alert('OK')">
+    <select id="carManufacturer" name="carManufacturer">
+        <optgroup label="歐洲車">
+            <option value="volvo">Volvo</option>
+            <option value="audi">Audi</option>
+        </optgroup>
+        <optgroup label="美國車">
+            <option value="chrysler">Chrysler</option>
+            <option value="ford">Ford</option>
+        </optgroup>
+    </select>
+    <input id="ageCategory" name="ageCategory" list="ageRanges" />
+    <datalist id="ageRanges">
+        <option value="1">低於2歲</option>
+        <option value="2">2 - 7</option>
+        <option value="3">8 - 12</option>
+        <option value="4">13-18</option>
+        <option value="5">成人</option>
+    </datalist>
+    <br/>
+    <input id="orderRef" name="orderRef" type="text" placeholder="輸入訂單編號" required
+          pattern="[0-9]{2}[A-Z]{3}" title="2 digits and 3 uppercase letters" />
+
+    <input id="email"  type="email" placeholder="Enter your email" required="required"/>
+    <input type="submit"/>
+    </form>
+    <script>
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+PUT  http://localhost:8080/mvrest0317/api/items/S002/ASUS NUC Computer/29900
+
+GET http://localhost:8080/mvrest0317/api/items/S002
+
+
+/* update item by using sku and item Object */
+PUT http://localhost:8080/mvrest0317/api/items/S001
+
+{
+    "sku":"S001",
+    "name":"ASUS NUC Computer",
+    "price":18000
+}

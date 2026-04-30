@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>   
+    <style>       
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+</head>
+<body>  
+  <button id="myButton">Click Me</button>  <br/>
+  <div class="great-grand-parent">
+   <div class="grand-parent">
+      <ul class="parent">
+         <li class="child-one">Child One</li>
+         <li class="child-two">Child Two</li>
+      </ul>
+   </div>
+   <div class="grand-parent">
+      <ul class="parent">
+         <li class="child-three">Child Three</li>
+         <li class="child-four">Child Four</li>
+      </ul>       
+   </div>
+   <ul>
+         <li class="child-three">Child Five</li>
+         <li class="child-four">Child Six</li>
+    </ul>
+</div>
+
+
+  <script>
+    myclick=function(){
+       $( ".grand-parent" ).find("ul").css( "border", "2px dashed red" );
+    }
+    function start(){
+        $("#myButton").click(myclick);
+    }
+    $(document).ready(()=>{       
+        console.log("jQuery is ready!");
+        start();
+    });
+  </script>  
+</body>
+</html>

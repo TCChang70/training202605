@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+   
+</head>
+<body>  
+ <h2>jQuery Test</h2>
+    <button id="b1">bt1</button><button id="b2">bt2</button><p></p>
+   <script>
+     function test(){
+        alert("Hello jQuery!");
+     }
+     function test2(){
+        alert("Hello jQuery 2!");
+     }
+     function start(){
+       //$("button").click(test); 
+       $("#b1").click(test); 
+       $("#b2").click(test2); 
+     }   
+     $(document).ready(start);
+   </script>
+</body>
+</html>

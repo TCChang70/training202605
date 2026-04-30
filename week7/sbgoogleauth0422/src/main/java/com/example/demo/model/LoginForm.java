@@ -1,0 +1,19 @@
+package com.example.demo.model;
+
+public class LoginForm {
+  String secret;
+  int code;
+  public String getSecret() {
+	return secret;
+  }
+  public void setSecret(String secret) {
+	this.secret = secret;
+  }
+  public int getCode() {
+	return code;
+  }
+  public void setCode(int code) {
+	this.code = code;
+  }
+  
+}

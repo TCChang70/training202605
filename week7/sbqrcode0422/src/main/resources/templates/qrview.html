@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Google QR Code</title>
+</head>
+<body>
+    <h2>掃描 QR Code </h2>
+    <img th:src="${qrCode}" alt="Google QR Code">
+	<h2>
+    <p>QR Code內容：<div th:text="${codeString}"></div></p>
+	 
+	 </h2>
+</body>
+</html>
+        

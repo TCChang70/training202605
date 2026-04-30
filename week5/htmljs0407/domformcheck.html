@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>     
+</head>
+<body>  
+   <form id="form1" action="javascript:alert('OK')">
+    <input type="number" id="age" placeholder="輸入年齡" required />    
+    <input type="submit"/>
+   </form>
+   <script>
+    // 取得表單元素
+    var form = document.getElementById('form1');
+
+    // 監聽表單提交事件
+    form.addEventListener('submit', function(event) {
+        // 阻止表單的默認提交行為
+        event.preventDefault();
+
+        // 檢查表單的有效性
+        var ageInput = document.getElementById('age');
+        if (ageInput.value < 1 || ageInput.value > 120) {
+            alert('年齡必須在1到120之間！');
+            return;
+        }else {            
+            form.submit();
+        }
+        
+    }); 
+   </script>
+</body>
+</html>

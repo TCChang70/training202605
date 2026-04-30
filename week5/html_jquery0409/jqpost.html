@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>   
+    <style>       
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+</head>
+<body>  
+ <form action="javascript:alert('Form submitted!');">
+  姓氏: <input type="text" name="FirstName" value="Vinc" /><br/>
+  名字: <input type="text" name="LastName" value="Lee" /><br/>
+  <input type="submit" value="Submit" />
+</form>
+
+  <script>
+    function result(data,status){
+        console.log("Server status:", status);
+        console.log("Server response:", data);
+    }
+    actionFunction=function(event){
+        event.preventDefault(); // 阻止表單的默認提交行為
+        $.post("http://localhost:8080/mvwebuser0409/user",
+            { 
+              FirstName:$("input[name='FirstName']").val(), 
+              LastName:$("input[name='LastName']").val()
+            },
+             result);
+    }
+    function start(){
+        $("form").submit(actionFunction);
+    }
+    $(document).ready(()=>{       
+        console.log("jQuery is ready!");
+        start();
+    });
+  </script>  
+</body>
+</html>

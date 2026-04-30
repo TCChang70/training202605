@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <table id="myTable" border="1" width="30%">
+        <tr>
+            <th>姓名</th>
+            <th>年齡</th>
+            <th>性別</th>
+        </tr>
+    </table>
+    <p></p>
+    <button onclick="tableadd()">Add Item 1</button>
+    <button onclick="removerow()">Remove Last Row</button>
+    <script>
+        function removerow() {
+            var table = document.getElementById('myTable');
+            var rowCount = table.rows.length;
+            if (rowCount > 1) { // 確保至少保留表頭
+                table.deleteRow(rowCount - 1);
+            }
+        }
+        function tableadd() {
+            var table = document.getElementById('myTable');
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            cell1.innerHTML = "張三";
+            cell2.innerHTML = "25";
+            cell3.innerHTML = "男";             
+
+        }
+       
+    </script>
+</body>
+
+</html>

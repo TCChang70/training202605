@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.staticfile.org/angular.js/1.8.1/angular.min.js"></script>
+</head>
+<body>
+ <!--  ng-init="quantity=1;price=5"  -->
+<div ng-app="myApp" ng-controller="myCtrl"> 
+    數量: <input type="number" ng-model="quantity"><br>
+    單價: <input type="number" ng-model="price"><br>
+    <br/>
+    總價: {{quantity * price}}
+</div>
+ 
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.quantity= 3;
+    $scope.price= 5;
+});
+
+</script>
+
+ 
+</body>
+</html>

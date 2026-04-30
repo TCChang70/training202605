@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button id="myButton">Get All Coffees</button>
+    <button id="addCof">Add Coffee</button>
+    <div id="cofDiv" style="display: none;">
+        <form id="cofForm" action="javascript:void(0);">
+            <label for="cofName">咖啡名稱:</label>
+            <input type="text" id="cofName" name="cofName"><br>
+            <label for="supId">供應商:</label>
+            <input type="text" id="supId" name="supId"><br>
+            <label for="price">單價:</label>
+            <input type="text" id="price" name="price"><br>
+            <label for="sales">銷售量:</label>
+            <input type="text" id="sales" name="sales"><br>
+            <label for="total">總數量:</label>
+            <input type="text" id="total" name="total"><br>
+            <button id="submitBtn">新增</button>
+        </form>
+    </div>
+    <table id="cofTB" width="60%"></table>
+    <script>
+        function updateAction(event) {
+            event.preventDefault();
+            let cofName = $("#cofName").val();
+            let supId = $("#supId").val();
+            let price = $("#price").val();
+            let sales = $("#sales").val();
+            let total = $("#total").val();
+            let dataObj = { cofName, supId, price, sales, total };
+            console.log(dataObj);
+            $.ajax({
+                method: 'PUT',
+                url: "http://localhost:8080/mvrestjpa0319/api/coffees/" + cofName,
+                contentType: "application/json",
+                data: JSON.stringify(dataObj),
+                success: function (rs) {
+                    $("#cofDiv").hide();
+                    //alert(rs);
+                    myclick();
+                }
+            });
+        }
+
+        function updateCoffee(btn) {
+            $("#cofDiv").show();
+            var currentRow = $(btn).closest("tr");
+            var cofName = currentRow.find("td:eq(0)").text();
+            var supId = currentRow.find("td:eq(1)").text();
+            var price = currentRow.find("td:eq(2)").text();
+            var sales = currentRow.find("td:eq(3)").text();
+            var total = currentRow.find("td:eq(4)").text();
+            //alert(n);
+            $("#cofName").val(cofName);
+            $("#supId").val(supId);
+            $("#price").val(price);
+            $("#sales").val(sales);
+            $("#total").val(total);
+            $("#submitBtn").text("修改");
+            $("#submitBtn").on("click", updateAction);
+        }
+
+        function deleteCoffee(btn) {            
+            var currentRow = $(btn).closest("tr");
+            var cofName = currentRow.find("td:eq(0)").text();
+            var ans=confirm("確定要刪除 " + cofName + " 嗎？");
+            if(!ans){
+                return;
+            }
+            $.ajax({
+                method: 'DELETE',
+                url: "http://localhost:8080/mvrestjpa0319/api/coffees/" + cofName,
+                success: function (rs) {                    
+                    myclick();
+                },
+                error: function (xhr, status, error) {
+                    alert("刪除失敗: " + error);
+                }
+            });
+
+        }
+
+        function onSuccess(data) {
+            $("#cofTB").empty();
+            $("#cofTB").attr("border", "1");
+            //建立表格的第㇐列
+            var firstRow = $("<tr><th>咖啡名稱</th><th>供應商</th><th>單價</th><th>銷售量</th><th>總數量</th><th>Action</th></tr>");
+            $("#cofTB").append(firstRow);
+            //將取得的資料㇐㇐建立為表格的每㇐列           
+            $.each(data, function (i) {
+                var row = $("<tr></tr>");
+                var td1 = $("<td></td>").text(this.cofName).appendTo(row);
+                var td2 = $("<td></td>").text(this.supId).appendTo(row);
+                var td3 = $("<td></td>").text(this.price).appendTo(row);
+                var td4 = $("<td></td>").text(this.sales).appendTo(row);
+                var td5 = $("<td></td>").text(this.total).appendTo(row);
+                var td6 = $("<td></td>").html("<button onclick=updateCoffee(this)>修改</button><button  onclick=deleteCoffee(this)>刪除</button>").appendTo(row);
+                $("#cofTB").append(row);
+            });
+        }
+        myclick = function () {
+            dataUrl = "http://localhost:8080/mvrestjpa0319/api/coffees";
+            $.ajax({
+                method: 'GET',
+                url: dataUrl,	//設定資料的網址
+                dataType: "json",	//設定回傳的資料格式
+                success: onSuccess	//設定當Ajax要求成功時所要執行的函式
+            });
+
+        }
+        function insertaction(event) {
+            event.preventDefault();
+            let cofName = $("#cofName").val();
+            let supId = $("#supId").val();
+            let price = $("#price").val();
+            let sales = $("#sales").val();
+            let total = $("#total").val();
+            let dataObj = { cofName, supId, price, sales, total };
+            console.log(dataObj);
+            $.ajax({
+                method: 'POST',
+                url: "http://localhost:8080/mvrestjpa0319/api/coffees",
+                contentType: "application/json",
+                data: JSON.stringify(dataObj),
+                success: function (rs) {
+                    $("#cofDiv").hide();
+                    myclick();
+                }
+            });
+        }
+        function start() {
+            $("#myButton").click(myclick);
+            $("#addCof").click(() => {
+                $("#submitBtn").text("新增");
+                $("#submitBtn").click(insertaction);
+                $("#cofDiv").slideToggle();
+            });
+
+        }
+        $(document).ready(() => {
+            console.log("jQuery is ready!");
+            start();
+        });
+    </script>
+</body>
+
+</html>

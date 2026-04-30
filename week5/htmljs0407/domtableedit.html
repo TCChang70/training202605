@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <table id="myTable" border="1" width="30%">
+        <tr>
+            <th>姓名</th>
+            <th>年齡</th>
+            <th>性別</th>
+        </tr>
+        <tr><td>A</td><td>20</td><td>Male</td></tr>
+        <tr><td>B</td><td>20</td><td>Male</td></tr>
+        <tr><td>C</td><td>20</td><td>Male</td></tr>
+    </table>
+
+    <button onclick="update()">edit</button>
+    <script>
+        function update() {
+            var table = document.getElementById('myTable');
+            table.rows[1].cells[0].innerHTML = "張三";
+            table.rows[1].cells[1].innerHTML = "25";        
+            table.rows[1].cells[2].innerHTML = "男";
+        }
+
+    </script>
+</body>
+
+</html>

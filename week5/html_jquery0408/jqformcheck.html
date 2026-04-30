@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button id="myButton">Click Me</button>
+    <form action="javascript:alert( 'success!' );">
+        <div>
+            <input type="text" value="javascript">
+            <input type="submit">
+        </div>
+    </form>
+    <span></span>
+
+    <script>
+        myclick = function () {
+
+        }
+        function start() {
+            $("#myButton").click(myclick);
+            $("form").submit(function (event) {
+                if ($("input:first").val() === "javascript") {
+                    $("span").text("Submitted Successfully.").show();
+                    return;
+                }
+                $("span").text("Not valid!").show().fadeOut(2000);
+                event.preventDefault();
+            });
+
+        }
+        $(document).ready(() => {
+            console.log("jQuery is ready!");
+            start();
+        });
+    </script>
+</body>
+
+</html>

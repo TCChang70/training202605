@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>
+    <style>
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <button id="myButton">Get All Items</button>
+    <button id="myButton2">Add Item</button>
+    <script>
+        function onSuccess(data) {
+            if (data != undefined && data != "")
+                alert(JSON.stringify(data));
+        }
+
+        myclick = function () {
+            $.ajax({
+                method: 'GET',
+                url: 'http://localhost:8080/mvrsstatus0409/api/items', //設定資料的網址                
+                dataType: "json", //設定回傳的資料格式                
+                statusCode: { //依不同StatusCode執行不同邏輯                        
+                    201: function (res, stausText, xhr) {
+                        alert("201-Location=" +
+                            //透過res取出Response Header
+                            res.getResponseHeader("Location"));
+                    },
+                    404: function () {
+                        alert("Page Not Found!");
+                    },
+                    204: function () {
+                        alert("No Data Content!");
+                    },
+                    500: function (xhr, statusText, err) {
+                        alert(xhr.responseText);
+                    }
+                },
+                success: onSuccess //設定當Ajax要求成功時所要執行的函式
+            });
+
+        }
+        function insertItem() {
+            $.ajax({
+                method: 'PUT',
+                url: 'http://localhost:8080/mvrsstatus0409/api/items/SK001/Apple/50', //設定資料的網址                
+                dataType: "text", //設定回傳的資料格式                
+                statusCode: { //依不同StatusCode執行不同邏輯                        
+                    201: function (res, stausText, jqXHR) {
+                        alert("201-Location=" +
+                            //透過res取出Response Header                            
+                            jqXHR.getResponseHeader("Location"));
+                        console.log("201-Response Location=" + jqXHR.getResponseHeader("Location"));
+                    },
+                    204: function () {
+                        alert("No Data Add!");
+                    }
+                },
+                success: onSuccess //設定當Ajax要求成功時所要執行的函式
+            });
+        }
+        function start() {
+            $("#myButton").click(myclick);
+            $("#myButton2").click(insertItem);
+        }
+        $(document).ready(() => {
+            console.log("jQuery is ready!");
+            start();
+        });
+    </script>
+</body>
+
+</html>

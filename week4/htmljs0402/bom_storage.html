@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>   
+   
+</head>
+<body>  
+    
+    <button onclick="storeData()">Save</button>
+    <button onclick="getData()">Get Data</button>    <br/>
+
+    <button onclick="saveCookieData()">Save Cookie</button>
+    <button onclick="getCookieData()">Get Cookie</button>
+    
+</body>
+<script>
+   function storeData(){
+       var data = prompt("Enter some data to store:");
+       localStorage.setItem("myData", "Local:"+data);
+       sessionStorage.setItem("myData2", "Session:"+data);
+   }
+   function getData(){
+       var data = localStorage.getItem("myData");
+       var data2 = sessionStorage.getItem("myData2");
+       alert(data+"\n"+data2);
+   }
+   function saveCookieData(){
+      var d = new Date();
+      d.setTime(d.getTime() + (1 * 30 * 1000 ));
+      expires = "expires=" + d.toUTCString();
+      alert(expires);
+      document.cookie = 'username=Mary; '+expires+'; path=/';
+    }
+    function getCookieData() {
+      var cookieAry = document.cookie.split(';');
+      for(var i=0;i< cookieAry.length;i++){
+        console.log(cookieAry[i]);
+      }      
+    }
+
+</script>
+</html>

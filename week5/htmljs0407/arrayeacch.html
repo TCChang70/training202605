@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My JS Page</title>   
+    <style>      
+    </style>     
+</head>
+<body>  
+    <h2>Array Each</h2>
+    <button onclick="test()">show</button>
+    <script>
+        function test() {
+            let arr = [10, 20, 30, 40, 50];
+            arr.forEach((item,index) => {
+                console.log("Index:"+ index+" Value: "+ item);
+            });
+        }
+    </script>
+</body>     
+</html>

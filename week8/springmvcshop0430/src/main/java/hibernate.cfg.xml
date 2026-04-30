@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- JDBC 驅動程式 -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <!-- 連線 URL：serverTimezone 必填，否則 MySQL 8 會報錯 -->
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/classicmodels?useUnicode=true&amp;characterEncoding=utf8
+        </property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1234</property>
+        <!-- 告訴 Hibernate 使用 MySQL 的 SQL 方言 -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- 對應 Entity 類別（加入 Hibernate 後必須宣告） -->
+        <mapping class="demo.springmvc.model.Product"/>
+    </session-factory>
+</hibernate-configuration>

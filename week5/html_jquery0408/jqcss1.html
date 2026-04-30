@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My jQuery HTML Page</title>   
+    <style>       
+    .mycolor{
+        color:blue;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+ 
+</head>
+<body>  
+  <button id="myButton">css 1</button>  
+  <button id="myButton2">add class</button>  
+  <br/>
+  <div id="myDiv">
+    <p>這是第一段.</p>
+    <p class="c1">這是第二段.</p>
+    <p class="c1">這是第三段.</p>
+  </div>
+  <script>
+    myclick=function(){
+        $(".c1").css("color","red");
+    }
+    myclick2=function(){
+        $("p:first").addClass("mycolor");
+    }
+    function start(){
+        $("#myButton").click(myclick);
+        $("#myButton2").click(myclick2);
+    }
+    $(document).ready(()=>{       
+        console.log("jQuery is ready!");
+        start();
+    });
+  </script>  
+</body>
+</html>

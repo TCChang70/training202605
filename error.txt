@@ -1,0 +1,17 @@
+Operation failed: There was an error while applying the SQL script to the database.
+Executing:
+ALTER TABLE `walletpet`.`budget` 
+ADD CONSTRAINT `fk_category_id`
+  FOREIGN KEY (`categoryId`)
+  REFERENCES `walletpet`.`categories` (`categoryId`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ERROR 3780: Referencing column 'categoryId' and referenced column 'categoryId' in foreign key constraint 'fk_category_id' are incompatible.
+SQL Statement:
+ALTER TABLE `walletpet`.`budget` 
+ADD CONSTRAINT `fk_category_id`
+  FOREIGN KEY (`categoryId`)
+  REFERENCES `walletpet`.`categories` (`categoryId`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
